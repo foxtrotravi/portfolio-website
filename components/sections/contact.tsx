@@ -5,6 +5,11 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 import Link from "next/link"
 
 export function Contact() {
+  const email = "ravisinghlodhi2357@gmail.com";
+  const github = "https://github.com/foxtrotravi"
+  const linkedin = "https://linkedin.com/in/ravi-singh-lodhi"
+  const twitter = "https://x.com/RaviSinghLodhi"
+
   return (
     <section id="contact" className="py-24 md:py-32 border-t border-border/40">
       <div className="container px-4 md:px-6 flex justify-center w-full mx-auto">
@@ -16,26 +21,26 @@ export function Contact() {
             </p>
             
             <Link 
-              href="mailto:contact@example.com" 
+              href={`mailto:${email}`} 
               className="text-2xl md:text-4xl font-bold hover:text-cyan-500 transition-colors mb-12"
             >
-              contact@example.com
+              {email}
             </Link>
 
             <div className="flex gap-6">
-              <Link href="#" className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors">
+              <Link href={github} className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors" target="_blank">
                 <Github className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="#" className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors">
+              <Link href={linkedin} className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors" target="_blank">
                 <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link href="#" className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors">
+              <Link href={twitter} className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors" target="_blank">
                 <Twitter className="h-6 w-6" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="mailto:contact@example.com" className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors">
+              <Link href={`mailto:${email}`} className="p-3 rounded-full bg-secondary hover:bg-cyan-500/10 hover:text-cyan-500 transition-colors" target="_blank">
                 <Mail className="h-6 w-6" />
                 <span className="sr-only">Email</span>
               </Link>
