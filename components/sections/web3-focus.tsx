@@ -1,12 +1,39 @@
 "use client"
 
+import { useRef, useLayoutEffect } from "react"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Code2, Cpu, Lock } from "lucide-react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export function Web3Focus() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".web3-card", {
+        x: 100,
+        opacity: 0,
+        duration: 1, // With scrub, duration is about proportion, but stagger uses it
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 90%", // Start when top of section hits 90% of viewport
+          end: "bottom 60%", // End when bottom of section hits 60% of viewport (adjust for scrub length)
+          scrub: 1 // Smooth scrubbing, takes 1 second to catch up
+        }
+      })
+    }, containerRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="py-24 md:py-32 bg-zinc-950 text-zinc-50 relative overflow-hidden flex justify-center">
+    <section ref={containerRef} className="py-24 md:py-32 bg-zinc-950 text-zinc-50 relative overflow-hidden flex justify-center">
       {/* Abstract Background */}
       <div className="absolute inset-0 z-0 opacity-20">
          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-900/20 via-zinc-950 to-zinc-950" />
@@ -14,16 +41,20 @@ export function Web3Focus() {
 
       <div className="container relative z-10 px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <ScrollReveal>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-6">
-              DeFi & Smart Contract <br />
-              <span className="text-cyan-400">Architecture</span>
-            </h2>
-            <p className="text-lg text-zinc-400 mb-8 max-w-lg">
-              Specialized in building secure, gas-efficient on-chain systems. From automated market makers to governance protocols, I architect the future of finance.
-            </p>
+          <div>
+            <ScrollReveal>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-6">
+                DeFi & Smart Contract <br />
+                <span className="text-cyan-400">Architecture</span>
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <p className="text-lg text-zinc-400 mb-8 max-w-lg">
+                Specialized in building secure, gas-efficient on-chain systems. From automated market makers to governance protocols, I architect the future of finance.
+              </p>
+            </ScrollReveal>
             <div className="grid gap-4">
-              <Card className="bg-zinc-900/20 border-zinc-800 backdrop-blur-md">
+              <Card className="web3-card bg-zinc-900/20 border-zinc-800 backdrop-blur-md">
                 <CardContent className="flex items-start gap-4 p-4 text-zinc-100">
                   <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 shrink-0">
                     <Code2 className="h-6 w-6 text-cyan-400" />
@@ -35,7 +66,7 @@ export function Web3Focus() {
                 </CardContent>
               </Card>
               
-              <Card className="bg-zinc-900/20 border-zinc-800 backdrop-blur-md">
+              <Card className="web3-card bg-zinc-900/20 border-zinc-800 backdrop-blur-md">
                 <CardContent className="flex items-start gap-4 p-4 text-zinc-100">
                   <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 shrink-0">
                     <Lock className="h-6 w-6 text-cyan-400" />
@@ -47,7 +78,7 @@ export function Web3Focus() {
                 </CardContent>
               </Card>
               
-              <Card className="bg-zinc-900/20 border-zinc-800 backdrop-blur-md">
+              <Card className="web3-card bg-zinc-900/20 border-zinc-800 backdrop-blur-md">
                 <CardContent className="flex items-start gap-4 p-4 text-zinc-100">
                   <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 shrink-0">
                     <Cpu className="h-6 w-6 text-cyan-400" />
@@ -59,9 +90,9 @@ export function Web3Focus() {
                 </CardContent>
               </Card>
             </div>
-          </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={0.2}>
+          <div className="web3-card">
             <Card className="relative bg-zinc-900 border-zinc-800 font-mono text-sm shadow-2xl overflow-hidden text-zinc-300">
               <div className="absolute -top-10 -right-10 w-20 h-20 bg-cyan-500/20 blur-3xl rounded-full" />
               
@@ -85,7 +116,7 @@ export function Web3Focus() {
                 <p>&#125;</p>
               </CardContent>
             </Card>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
