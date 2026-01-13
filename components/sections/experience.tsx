@@ -2,12 +2,16 @@ import { experience } from "@/data/experience"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
+import { TextReveal } from "@/components/ui/gsap-text-reveal"
+
 export function Experience() {
   return (
     <section id="experience" className="py-24 md:py-32 flex justify-center">
       <div className="container px-4 md:px-6">
         <ScrollReveal>
-          <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-12">Professional Journey</h2>
+          <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-12">
+            <TextReveal>Professional Journey</TextReveal>
+          </h2>
         </ScrollReveal>
 
         <div className="relative border-l border-zinc-200 dark:border-zinc-800 ml-3 md:ml-6 space-y-8">

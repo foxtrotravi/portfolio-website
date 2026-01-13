@@ -1,6 +1,7 @@
 "use client"
 
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { TextReveal } from "@/components/ui/gsap-text-reveal"
 
 export function About() {
   return (
@@ -9,8 +10,12 @@ export function About() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-start">
           <ScrollReveal>
             <h2 className="text-3xl font-bold tracking-tighter md:text-5xl lg:text-6xl mb-6">
-              Engineering with <br />
-              <span className="text-cyan-500">Purpose</span> & Precision.
+              <TextReveal>Engineering with </TextReveal>
+              <br />
+              <span className="text-cyan-500">
+                <TextReveal delay={0.2}>Purpose</TextReveal>
+              </span> 
+              <TextReveal delay={0.4}> & Precision.</TextReveal>
             </h2>
           </ScrollReveal>
           

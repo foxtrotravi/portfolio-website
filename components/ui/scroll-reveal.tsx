@@ -1,8 +1,10 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
-import { cn } from "@/lib/utils"
+import { useRef, useLayoutEffect } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -15,24 +17,40 @@ export const ScrollReveal = ({
   children, 
   className,
   width = "fit-content",
-  delay = 0.1 
+  delay = 0 
 }: ScrollRevealProps) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const elementRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const el = elementRef.current
+    if (!el) return
+
+    gsap.fromTo(el,
+      { y: 50, opacity: 0 },
+      {
+        y: 0, 
+        opacity: 1, 
+        duration: 1, 
+        ease: "power3.out",
+        delay: delay,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%", // Trigger when top of element hits 85% of viewport height
+          toggleActions: "play none none reverse" // Play on enter, reverse on leave back up
+        }
+      }
+    )
+    
+     // Cleanup function automatically handled by React for simple GSAP animations 
+     // but explicitly killing ScrollTriggers on unmount is good practice if complex
+     return () => {
+       ScrollTrigger.getAll().forEach(t => t.kill())
+     }
+  }, [delay])
 
   return (
-    <div ref={ref} style={{ width }} className={className}>
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 0.5, delay: delay, ease: "easeOut" }}
-      >
-        {children}
-      </motion.div>
+    <div ref={elementRef} style={{ width }} className={className}>
+      {children}
     </div>
   )
 }

@@ -6,13 +6,17 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
+import { TextReveal } from "@/components/ui/gsap-text-reveal"
+
 export function Projects() {
   return (
     <section id="projects" className="py-24 md:py-32 bg-secondary/30 flex justify-center">
       <div className="container px-4 md:px-6">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl">Selected Work</h2>
+            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl">
+              <TextReveal>Selected Work</TextReveal>
+            </h2>
             <Link href="#" className="hidden md:flex items-center text-cyan-500 hover:text-cyan-400 transition-colors">
               View all archives <ArrowUpRight className="ml-1 h-4 w-4" />
             </Link>

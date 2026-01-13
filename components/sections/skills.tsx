@@ -4,12 +4,16 @@ import { skills } from "@/data/skills"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
+import { TextReveal } from "@/components/ui/gsap-text-reveal"
+
 export function Skills() {
   return (
     <section id="skills" className="py-24 md:py-32 flex justify-center">
       <div className="container px-4 md:px-6">
         <ScrollReveal>
-          <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-12">Technical Expertise</h2>
+          <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-12">
+            <TextReveal>Technical Expertise</TextReveal>
+          </h2>
         </ScrollReveal>
         
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

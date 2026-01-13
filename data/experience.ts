@@ -1,20 +1,26 @@
 export const experience = [
   {
     role: "Senior Full-Stack Engineer",
-    company: "TechFlow Labs",
-    period: "2023 - Present",
-    description: "Leading the development of a high-performance decentralized trading platform. Orchestrated the migration from Monolith to Microservices, reducing latency by 40%.",
+    company: "Smart Transactions",
+    period: "Sep 2024 - Present",
+    description: "Building multiple web3 applications using React, Next.js, React Native and Rust.",
   },
   {
-    role: "Blockchain Developer",
-    company: "ChainSecure",
-    period: "2021 - 2023",
-    description: "Developed and audited smart contracts for DeFi protocols with over $50M TVL. Implemented multi-sig wallet integration and gas-optimized staking mechanisms.",
+    role: "SDE 2",
+    company: "Purplle",
+    period: "Dec 2020 - Sep 2024",
+    description: "Developed and shipped Flutter moible application with over 50M+ downloads.",
   },
   {
-    role: "Mobile Engineer",
-    company: "Appify Solutions",
-    period: "2019 - 2021",
-    description: "Built cross-platform mobile applications using React Native. Improved app performance and reduced crash rates by 99% through rigorous testing and native module optimization.",
+    role: "Fullstack Engineer",
+    company: "Livio Building Systems",
+    period: "Sep 2020 - Dec 2020",
+    description: "Built cross-platform mobile applications using Flutter. Built full stack applications, APIs and microservices using Ruby on Rails.",
+  },
+  {
+    role: "Solutions Engineer",
+    company: "Deqode",
+    period: "Jan 2019 - Sep 2020",
+    description: "Built native Android & cross-platform crypto mobile applications using Flutter and React Native.",
   },
 ]
