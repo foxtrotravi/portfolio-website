@@ -4,17 +4,13 @@ import { ArrowRight, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { TextReveal } from "@/components/ui/gsap-text-reveal"
+import { InteractiveGridBackground } from "@/components/ui/interactive-grid-background"
 
 export function Hero() {
   return (
     <section className="relative flex h-screen min-h-[800px] w-full flex-col items-center justify-center overflow-hidden bg-background">
-      {/* Background Grid - Minimalist Engineering Feel */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05]" 
-           style={{ 
-             backgroundImage: "linear-gradient(#9ca3af 1px, transparent 1px), linear-gradient(90deg, #9ca3af 1px, transparent 1px)", 
-             backgroundSize: "40px 40px" 
-           }} 
-      />
+      {/* Background Grid - Interactive & Minimalist */}
+      <InteractiveGridBackground />
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-background via-transparent to-background" />
 
       <div className="container relative z-10 flex flex-col items-start justify-center px-4 md:px-6">
